@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   title = 'client';
   users: any;
 
-  constructor(private accountService: AccountService) {
+  constructor(private http: HttpClient, private accountService: AccountService) {
 
   }
 
@@ -22,8 +22,9 @@ export class AppComponent implements OnInit {
 
   setCurrentUser() {
     const user: User = JSON.parse(localStorage.getItem('user') ?? '{}');
-    this.accountService.setCurrentUser(user);
+    if(user.username !== undefined) {
+      this.accountService.setCurrentUser(user);
+    }
+
   }
-
-
 }
