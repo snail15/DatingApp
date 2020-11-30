@@ -25,6 +25,9 @@ export class AppComponent implements OnInit {
     if(user.username !== undefined) {
       this.accountService.setCurrentUser(user);
     }
+    if(user.username === undefined) {
+      this.accountService.setCurrentUser(null);
+    }
 
   }
 }
